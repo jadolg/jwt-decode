@@ -11,7 +11,7 @@ import (
 	"os"
 )
 
-func toJsonString(x interface{}, colorize bool) (string, error) {
+func toJSONString(x interface{}, colorize bool) (string, error) {
 	if colorize {
 		f := colorjson.NewFormatter()
 		f.Indent = 2
@@ -43,7 +43,7 @@ func decodeToken(tokenString string, colorize bool) (string, error) {
 		return "", err
 	}
 
-	return toJsonString(claims, colorize)
+	return toJSONString(claims, colorize)
 }
 
 func main() {
