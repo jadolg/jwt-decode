@@ -10,12 +10,28 @@ import (
 	"os"
 )
 
-func printJson(x interface{}) {
+func toJsonString(x interface{}) (string, error) {
 	b, err := json.MarshalIndent(x, "", "  ")
 	if err != nil {
-		fmt.Println("error:", err)
+		return "", err
 	}
-	fmt.Print(string(b))
+	return string(b), nil
+}
+
+func decodeToken(tokenString string) (string, error) {
+	var claims map[string]interface{}
+
+	token, err := jwt.ParseSigned(tokenString)
+	if err != nil {
+		return "", err
+	}
+
+	err = token.UnsafeClaimsWithoutVerification(&claims)
+	if err != nil {
+		return "", err
+	}
+
+	return toJsonString(claims)
 }
 
 func main() {
@@ -37,17 +53,11 @@ func main() {
 		tokenString = *tokenArgument
 	}
 
-	var claims map[string]interface{}
+	decodedToken, err := decodeToken(tokenString)
 
-	token, err := jwt.ParseSigned(tokenString)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("could not decode token %v", err)
 	}
 
-	err = token.UnsafeClaimsWithoutVerification(&claims)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	printJson(claims)
+	fmt.Print(decodedToken)
 }
