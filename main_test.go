@@ -29,13 +29,13 @@ func TestParseCorrectly(t *testing.T) {
   "nbf": 1604151163,
   "sub": ""
 }`
-	decodedToken, err := decodeToken(testToken)
+	decodedToken, err := decodeToken(testToken, false)
 	assert.NoError(t, err)
 	assert.Equal(t, expectedData, decodedToken)
 }
 
 func TestCantParse(t *testing.T) {
 	testToken := "NotAToken"
-	_, err := decodeToken(testToken)
+	_, err := decodeToken(testToken, false)
 	assert.Error(t, err)
 }

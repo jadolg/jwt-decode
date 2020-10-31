@@ -5,20 +5,32 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/TylerBrock/colorjson"
 	"gopkg.in/square/go-jose.v2/jwt"
 	"log"
 	"os"
 )
 
-func toJsonString(x interface{}) (string, error) {
-	b, err := json.MarshalIndent(x, "", "  ")
-	if err != nil {
-		return "", err
+func toJsonString(x interface{}, colorize bool) (string, error) {
+	if colorize {
+		f := colorjson.NewFormatter()
+		f.Indent = 2
+
+		s, err := f.Marshal(x)
+		if err != nil {
+			return "", err
+		}
+		return string(s), nil
+	} else {
+		b, err := json.MarshalIndent(x, "", "  ")
+		if err != nil {
+			return "", err
+		}
+		return string(b), nil
 	}
-	return string(b), nil
 }
 
-func decodeToken(tokenString string) (string, error) {
+func decodeToken(tokenString string, colorize bool) (string, error) {
 	var claims map[string]interface{}
 
 	token, err := jwt.ParseSigned(tokenString)
@@ -31,11 +43,12 @@ func decodeToken(tokenString string) (string, error) {
 		return "", err
 	}
 
-	return toJsonString(claims)
+	return toJsonString(claims, colorize)
 }
 
 func main() {
 	tokenArgument := flag.String("t", "", "Token to decode. If not specified will try to read it from stdin.")
+	colorizeArgument := flag.Bool("c", false, "Colorize the output")
 	flag.Parse()
 
 	tokenString := ""
@@ -53,7 +66,7 @@ func main() {
 		tokenString = *tokenArgument
 	}
 
-	decodedToken, err := decodeToken(tokenString)
+	decodedToken, err := decodeToken(tokenString, *colorizeArgument)
 
 	if err != nil {
 		log.Fatalf("could not decode token %v", err)
