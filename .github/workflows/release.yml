@@ -16,22 +16,22 @@ jobs:
           goos: linux
           goarch: amd64
       - uses: wangyoucao577/go-release-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            goos: linux
-            goarch: arm
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: linux
+          goarch: arm
       - uses: wangyoucao577/go-release-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            goos: linux
-            goarch: arm64
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: linux
+          goarch: arm64
       - uses: wangyoucao577/go-release-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            goos: windows
-            goarch: amd64
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: windows
+          goarch: amd64
       - uses: wangyoucao577/go-release-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            goos: darwin
-            goarch: amd64
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: darwin
+          goarch: amd64
