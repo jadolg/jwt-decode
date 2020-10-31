@@ -21,13 +21,12 @@ func toJSONString(x interface{}, colorize bool) (string, error) {
 			return "", err
 		}
 		return string(s), nil
-	} else {
-		b, err := json.MarshalIndent(x, "", "  ")
-		if err != nil {
-			return "", err
-		}
-		return string(b), nil
 	}
+	b, err := json.MarshalIndent(x, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
 }
 
 func decodeToken(tokenString string, colorize bool) (string, error) {
