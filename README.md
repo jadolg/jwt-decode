@@ -2,6 +2,9 @@
 
 Simple tool to decode JSON Web token. No validation is included!
 
+![Build](https://github.com/jadolg/jwt-decode/workflows/Go/badge.svg)
+![Release](https://github.com/jadolg/jwt-decode/workflows/Release/badge.svg)
+
 ## How to use
 
 Just pass it as an argument `jwt-decode -t "ABeautifulToken"`
