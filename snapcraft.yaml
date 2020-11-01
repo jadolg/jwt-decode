@@ -8,7 +8,7 @@ confinement: strict
 base: core18
 
 parts:
-  docker-image-save:
+  jwt-decode-claims:
     plugin: go
     go-importpath: github.com/jadolg/jwt-decode
     source: https://github.com/jadolg/jwt-decode
@@ -17,6 +17,6 @@ parts:
       - gcc
 
 apps:
-  docker-image-save:
+  jwt-decode-claims:
     command: bin/jwt-decode
 
