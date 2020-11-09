@@ -39,4 +39,4 @@ jobs:
     - name: Build and push docker image
       uses: docker/build-push-action@v2
       with:
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ env.GITHUB_SHA }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.GITHUB_SHA }}
