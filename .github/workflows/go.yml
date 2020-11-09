@@ -37,7 +37,6 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and push docker image
-      uses: docker/build-push-action@v2
-      with:
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }}
-        push: true
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }}
