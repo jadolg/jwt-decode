@@ -38,7 +38,7 @@ jobs:
   push:
     name: Push
     runs-on: ubuntu-latest
-    if: { { github.ref == 'ref/head/master' } }
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Build and push docker image
         run: |
