@@ -7,7 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -36,13 +35,12 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push docker image
-      run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} .
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }}
-
-    - name: Push image as latest
-      if: {{ github.ref == 'ref/head/master' }}
-      run: |
-        docker tag ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
+  push:
+    if: { { github.ref == 'ref/head/master' } }
+    steps:
+      - name: Build and push docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }}
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
