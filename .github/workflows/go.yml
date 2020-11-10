@@ -36,7 +36,12 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and push docker image
-      if: github.ref == 'refs/heads/master'
       run: |
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} .
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }}
+
+    - name: Push latest
+      if: github.ref == 'refs/heads/master'
+      run: |
+        docker tag ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/jwt-decode:latest
