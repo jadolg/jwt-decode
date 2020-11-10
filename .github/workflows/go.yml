@@ -36,6 +36,8 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
   push:
+    name: Push
+    runs-on: ubuntu-latest
     if: { { github.ref == 'ref/head/master' } }
     steps:
       - name: Build and push docker image
