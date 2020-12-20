@@ -5,11 +5,12 @@ description: |
   Just pass it as an argument jwt-decode-claims -t "ABeautifulToken" or pipe it in echo "ABeautifulToken" | jwt-decode-claims
 
 confinement: strict
-base: core20
+base: core18
 
 parts:
   jwt-decode-claims:
     plugin: go
+    go-importpath: github.com/jadolg/jwt-decode
     source: https://github.com/jadolg/jwt-decode
     source-type: git
     build-packages:
