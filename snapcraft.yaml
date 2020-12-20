@@ -2,15 +2,14 @@ name: jwt-decode-claims
 version: '0.2'
 summary: Simple tool to decode JSON Web token. No validation is included!.
 description: |
-  Just pass it as an argument jwt-decode -t "ABeautifulToken" or pipe it in echo "ABeautifulToken" | jwt-decode
+  Just pass it as an argument jwt-decode-claims -t "ABeautifulToken" or pipe it in echo "ABeautifulToken" | jwt-decode-claims
 
 confinement: strict
-base: core18
+base: core20
 
 parts:
   jwt-decode-claims:
     plugin: go
-    go-importpath: github.com/jadolg/jwt-decode
     source: https://github.com/jadolg/jwt-decode
     source-type: git
     build-packages:
