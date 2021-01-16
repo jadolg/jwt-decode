@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"github.com/TylerBrock/colorjson"
-	"gopkg.in/square/go-jose.v2/jwt"
 	"log"
 	"os"
+
+	"github.com/TylerBrock/colorjson"
+	"gopkg.in/square/go-jose.v2/jwt"
 )
 
 func toJSONString(x interface{}, colorize bool) (string, error) {
