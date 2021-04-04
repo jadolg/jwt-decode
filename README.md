@@ -16,7 +16,7 @@ You are the kind of person that would love to run the world using docker? This i
 
 ## How to install
 
-Download the latest release (from the GitHub releases) for your platform, place it in a directory within your $PATH, and you are good to go.
+Download the latest release (from the GitHub releases) for your platform, place it in a directory within your `$PATH`, and you are good to go.
 
 or
 
