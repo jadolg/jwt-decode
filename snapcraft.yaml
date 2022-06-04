@@ -1,11 +1,12 @@
 name: jwt-decode-claims
-version: '1.0.0'
+version: '2.0.0'
 summary: Simple tool to decode JSON Web token. No validation is included!.
 description: |
   Just pass it as an argument jwt-decode-claims -t "ABeautifulToken" or pipe it in echo "ABeautifulToken" | jwt-decode-claims
 
 confinement: strict
 base: core18
+grade: stable
 
 parts:
   jwt-decode-claims:
@@ -19,4 +20,3 @@ parts:
 apps:
   jwt-decode-claims:
     command: bin/jwt-decode
-
