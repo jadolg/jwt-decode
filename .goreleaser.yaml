@@ -34,7 +34,6 @@ changelog:
       - '^docs:'
       - '^test:'
 
-# .goreleaser.yaml
 snapcrafts:
   -
     id: jwt-decode-claims
@@ -51,4 +50,32 @@ snapcrafts:
     apps:
       jwt-decode-claims:
         command: jwt-decode
-        completer: completions/jwt-decode-claims.bash
+        completer: completions/jwt-decode.bash
+
+nfpms:
+  -
+    id: jwt-decode
+    package_name: jwt-decode
+    homepage: https://github.com/jadolg/jwt-decode
+    maintainer: Jorge Alberto Díaz Orozco (Akiel) <diazorozcoj@gmail.com>
+    description: |-
+      Simple tool to decode JSON Web token.
+    license: MIT
+    formats:
+      - deb
+    bindir: /usr/bin
+    section: default
+    priority: extra
+    contents:
+      - src: ./completions/jwt-decode.bash
+        dst: /usr/share/bash-completion/completions/jwt-decode
+        file_info:
+          mode: 0644
+      - src: ./completions/jwt-decode.fish
+        dst: /usr/share/fish/vendor_completions.d/jwt-decode.fish
+        file_info:
+          mode: 0644
+      - src: ./completions/jwt-decode.zsh
+        dst: /usr/share/zsh/vendor-completions/_jwt-decode
+        file_info:
+          mode: 0644
