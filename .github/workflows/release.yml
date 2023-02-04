@@ -17,7 +17,7 @@ jobs:
         with:
           go-version: ^1.19
       - name: Install Snapcraft
-        run: snap install snapcraft --classic --channel edge
+        run: sudo snap install snapcraft --classic --channel edge
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v4
         with:
