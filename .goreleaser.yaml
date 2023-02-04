@@ -32,3 +32,21 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+
+# .goreleaser.yaml
+snapcrafts:
+  -
+    id: jwt-decode-claims
+    name: jwt-decode-claims
+    publish: true
+    summary: Simple tool to decode JSON Web token. No validation is included!.
+    description: Just pass it as an argument jwt-decode-claims -t "ABeautifulToken" or pipe it in echo "ABeautifulToken" | jwt-decode-claims
+    channel_templates:
+      - stable
+    grade: stable
+    confinement: strict
+    license: MIT
+    base: core18
+    apps:
+      jwt-decode-claims:
+        command: bin/jwt-decode
