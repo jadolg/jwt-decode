@@ -49,4 +49,4 @@ snapcrafts:
     base: core18
     apps:
       jwt-decode-claims:
-        command: bin/jwt-decode
+        command: jwt-decode
