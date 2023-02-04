@@ -1,6 +1,7 @@
 before:
   hooks:
     - go mod tidy
+    - ./completions.sh
 builds:
   - env:
       - CGO_ENABLED=0
@@ -46,7 +47,8 @@ snapcrafts:
     grade: stable
     confinement: strict
     license: MIT
-    base: core18
+    base: core22
     apps:
       jwt-decode-claims:
         command: jwt-decode
+        completer: completions/jwt-decode-claims.bash
