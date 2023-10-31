@@ -21,3 +21,12 @@ Download the latest release (from the GitHub releases) for your platform, place 
 or
 
 If you are using Ubuntu you can just `snap install jwt-decode-claims` 
+
+or
+
+From my private apt repository
+```
+wget -O - https://deb.akiel.dev/gpg.pub.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/akiel.gpg
+sudo apt-add-repository deb "https://deb.akiel.dev/ all main"
+sudo apt install jwt-decode
+```
