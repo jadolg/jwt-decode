@@ -13,6 +13,15 @@ import (
 )
 
 var (
+	// Version is the version of the application.
+	Version = "dev"
+	// Commit is the git commit of the build
+	Commit = "none"
+	// Date is the date of the build
+	Date = "unknown"
+	// BuiltBy is the user/tool that built the binary
+	BuiltBy = "dirty hands"
+
 	rootCmd = &cobra.Command{
 		Use:              "jwt-decode",
 		Short:            "Simple tool to decode JSON Web token.",
@@ -46,15 +55,16 @@ var (
 	tokenArgument    string
 	colorizeArgument bool
 
-	// Cobra will only enable the completion subcommand if you have at least one subcommand
-	cmdDummy = &cobra.Command{
-		Use:    "dummy",
-		Hidden: true,
+	cmdVersion = &cobra.Command{
+		Use: "version",
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Printf("Version: %s, Commit: %s, Date: %s, BuiltBy: %s\n", Version, Commit, Date, BuiltBy)
+		},
 	}
 )
 
 func init() {
-	rootCmd.AddCommand(cmdDummy)
+	rootCmd.AddCommand(cmdVersion)
 	rootCmd.PersistentFlags().StringVarP(&tokenArgument, "token", "t", "", "Token to decode. If not specified will try to read it from stdin.")
 	rootCmd.PersistentFlags().BoolVarP(&colorizeArgument, "colorize", "c", false, "Colorize the output")
 }
