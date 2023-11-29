@@ -13,9 +13,13 @@ import (
 )
 
 var (
+	// Version is the version of the application.
 	Version = "dev"
-	Commit  = "none"
-	Date    = "unknown"
+	// Commit is the git commit of the build
+	Commit = "none"
+	// Date is the date of the build
+	Date = "unknown"
+	// BuiltBy is the user/tool that built the binary
 	BuiltBy = "dirty hands"
 
 	rootCmd = &cobra.Command{
