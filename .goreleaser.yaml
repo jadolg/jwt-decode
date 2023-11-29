@@ -51,6 +51,8 @@ snapcrafts:
     base: core22
     apps:
       jwt-decode-claims:
+        aliases:
+          - jwt-decode
         command: jwt-decode
         completer: completions/jwt-decode.bash
 
