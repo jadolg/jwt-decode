@@ -83,3 +83,21 @@ nfpms:
         dst: /usr/share/zsh/vendor-completions/_jwt-decode
         file_info:
           mode: 0644
+
+brews:
+  -
+    name: jwt-decode
+    homepage: "https://github.com/jadolg/jwt-decode"
+    description: "Simple tool to decode JSON Web token."
+    commit_author:
+      name: jadolg
+      email: diazorozcoj@gmail.com
+    repository:
+      token: "{{ .Env.GORELEASER_TAP_GITHUB_SECRET }}"
+      owner: jadolg
+      name: homebrew-tap
+      pull_request:
+         enabled: false
+    directory: Formula
+    install: |
+      bin.install "jwt-decode"

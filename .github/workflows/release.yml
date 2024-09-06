@@ -30,6 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_TOKEN }}
+          GORELEASER_TAP_GITHUB_SECRET: ${{ secrets.GORELEASER_TAP_GITHUB_SECRET }}
       - name: Publish deb to repository
         run: |
           curl --fail -H "Authorization: ${{ secrets.DEPLOY_TOKEN }}" "https://smd.akiel.dev/hook?script=${{ secrets.DEPLOY_SCRIPT }}"
