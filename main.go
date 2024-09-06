@@ -4,12 +4,13 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
+	"github.com/go-jose/go-jose/v4"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
 
 	"github.com/TylerBrock/colorjson"
-	"gopkg.in/square/go-jose.v2/jwt"
+	"github.com/go-jose/go-jose/v4/jwt"
 )
 
 var (
@@ -90,7 +91,24 @@ func toJSONString(x interface{}, colorize bool) (string, error) {
 func decodeToken(tokenString string, colorize bool) (string, error) {
 	var claims map[string]interface{}
 
-	token, err := jwt.ParseSigned(tokenString)
+	token, err := jwt.ParseSigned(
+		tokenString,
+		[]jose.SignatureAlgorithm{
+			jose.EdDSA,
+			jose.HS256,
+			jose.HS384,
+			jose.HS512,
+			jose.RS256,
+			jose.RS384,
+			jose.RS512,
+			jose.ES256,
+			jose.ES384,
+			jose.ES512,
+			jose.PS256,
+			jose.PS384,
+			jose.PS512,
+		},
+	)
 	if err != nil {
 		return "", err
 	}
