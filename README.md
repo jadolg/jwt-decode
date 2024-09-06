@@ -24,6 +24,15 @@ If you are using Ubuntu you can just `snap install jwt-decode-claims`
 
 or
 
+If you use homebrew: 
+
+```bash
+brew tap jadolg/homebrew-tap
+brew install jwt-decode
+```
+
+or
+
 From my private apt repository
 ```
 wget -O - https://deb.akiel.dev/gpg.pub.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/akiel.gpg
