@@ -1,6 +1,6 @@
 module github.com/jadolg/jwt-decode
 
-go 1.23
+go 1.26.2
 
 toolchain go1.23.0
 
